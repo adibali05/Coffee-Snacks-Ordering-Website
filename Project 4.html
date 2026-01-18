@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew & Bite - Coffee & Snacks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .coffee-animation {
+            animation: steam 2s ease-in-out infinite alternate;
+        }
+        @keyframes steam {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            100% { transform: translateY(-10px) rotate(2deg); opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-amber-900 via-orange-900 to-red-900 text-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Container -->
+    <div class="bg-gray-900/90 backdrop-blur-sm p-8 rounded-3xl shadow-2xl w-full max-w-6xl border border-amber-700/30">
+        
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-5xl font-extrabold text-amber-100 mb-2">Brew & Bite</h1>
+            <p class="text-lg text-amber-200/80">Your perfect coffee & snack destination</p>
+        </header>
+
+        <!-- Main App Content -->
+        <main>
+            <!-- Selection Screen -->
+            <div id="selection-screen">
+                <h2 class="text-3xl font-bold mb-8 text-center text-amber-100">Choose Your Order</h2>
+                
+                <!-- Tab Navigation -->
+                <div class="flex justify-center mb-8">
+                    <div class="bg-gray-800/60 p-2 rounded-2xl border border-amber-700/20">
+                        <button id="coffee-tab" class="tab-btn bg-amber-600 text-white px-6 py-3 rounded-xl font-semibold transition duration-300">
+                            ☕ Coffee
+                        </button>
+                        <button id="snacks-tab" class="tab-btn bg-transparent text-gray-400 px-6 py-3 rounded-xl font-semibold transition duration-300 hover:text-white">
+                            🥐 Snacks
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Coffee Section -->
+                <div id="coffee-section">
+                    <h3 class="text-2xl font-bold mb-6 text-center text-amber-200">Coffee Menu</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <!-- Coffee Cards -->
+                        <div class="coffee-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-coffee="Espresso" data-price="290" data-description="A shot of intense, dark coffee with rich crema">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=200&h=200&fit=crop&crop=center" alt="Espresso" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Espresso image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Espresso</h3>
+                                <p class="text-gray-400 text-sm mb-3">A shot of intense, dark coffee</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹290</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+                        
+                        <div class="coffee-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-coffee="Cappuccino" data-price="350" data-description="Espresso with steamed milk and velvety foam">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=200&h=200&fit=crop&crop=center" alt="Cappuccino" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Cappuccino image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Cappuccino</h3>
+                                <p class="text-gray-400 text-sm mb-3">Espresso with steamed milk foam</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹350</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+                        
+                        <div class="coffee-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-coffee="Latte" data-price="390" data-description="A creamy espresso with steamed milk and light foam">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?w=200&h=200&fit=crop&crop=center" alt="Latte" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Latte image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Latte</h3>
+                                <p class="text-gray-400 text-sm mb-3">A creamy espresso and steamed milk</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹390</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="coffee-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-coffee="Americano" data-price="310" data-description="Espresso diluted with hot water for a smooth taste">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?w=200&h=200&fit=crop&crop=center" alt="Americano" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Americano image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Americano</h3>
+                                <p class="text-gray-400 text-sm mb-3">Espresso with hot water</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹310</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="coffee-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-coffee="Mocha" data-price="435" data-description="Rich espresso with chocolate syrup and steamed milk">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop&crop=center" alt="Mocha" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Mocha image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Mocha</h3>
+                                <p class="text-gray-400 text-sm mb-3">Espresso with chocolate and milk</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹435</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="coffee-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-coffee="Macchiato" data-price="370" data-description="Espresso marked with a dollop of foamed milk">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=200&h=200&fit=crop&crop=center" alt="Macchiato" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Macchiato image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Macchiato</h3>
+                                <p class="text-gray-400 text-sm mb-3">Espresso marked with foam</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹370</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="coffee-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-coffee="Flat White" data-price="410" data-description="Double shot espresso with microfoam steamed milk">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=200&h=200&fit=crop&crop=center" alt="Flat White" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Flat White image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Flat White</h3>
+                                <p class="text-gray-400 text-sm mb-3">Double shot with microfoam</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹410</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="coffee-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-coffee="Cold Brew" data-price="350" data-description="Smooth cold-steeped coffee served over ice">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=200&h=200&fit=crop&crop=center" alt="Cold Brew" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Cold Brew image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Cold Brew</h3>
+                                <p class="text-gray-400 text-sm mb-3">Smooth cold-steeped coffee</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹350</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Snacks Section -->
+                <div id="snacks-section" class="hidden">
+                    <h3 class="text-2xl font-bold mb-6 text-center text-amber-200">Snacks Menu</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <!-- Original Snacks -->
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Croissant" data-price="180" data-description="Buttery, flaky French pastry">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1555507036-ab794f4afe5b?w=200&h=200&fit=crop&crop=center" alt="Croissant" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Croissant image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Croissant</h3>
+                                <p class="text-gray-400 text-sm mb-3">Buttery, flaky French pastry</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹180</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Blueberry Muffin" data-price="220" data-description="Soft muffin with fresh blueberries">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=200&h=200&fit=crop&crop=center" alt="Blueberry Muffin" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Blueberry Muffin image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Blueberry Muffin</h3>
+                                <p class="text-gray-400 text-sm mb-3">Soft muffin with fresh blueberries</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹220</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Grilled Sandwich" data-price="280" data-description="Toasted sandwich with cheese and vegetables">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=200&h=200&fit=crop&crop=center" alt="Grilled Sandwich" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Grilled Sandwich image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Grilled Sandwich</h3>
+                                <p class="text-gray-400 text-sm mb-3">Toasted with cheese & vegetables</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹280</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Chocolate Chip Cookie" data-price="120" data-description="Freshly baked cookie with chocolate chips">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=200&h=200&fit=crop&crop=center" alt="Chocolate Chip Cookie" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Chocolate Chip Cookie image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Chocolate Chip Cookie</h3>
+                                <p class="text-gray-400 text-sm mb-3">Freshly baked with chocolate chips</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹120</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Everything Bagel" data-price="200" data-description="Toasted bagel with cream cheese">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=200&h=200&fit=crop&crop=center" alt="Everything Bagel" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Everything Bagel image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Everything Bagel</h3>
+                                <p class="text-gray-400 text-sm mb-3">Toasted bagel with cream cheese</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹200</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Cheese Danish" data-price="250" data-description="Flaky pastry with sweet cheese filling">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=200&h=200&fit=crop&crop=center" alt="Cheese Danish" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Cheese Danish image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Cheese Danish</h3>
+                                <p class="text-gray-400 text-sm mb-3">Flaky pastry with cheese filling</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹250</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Blueberry Scone" data-price="190" data-description="Traditional British scone with blueberries">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=200&h=200&fit=crop&crop=center" alt="Blueberry Scone" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Blueberry Scone image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Blueberry Scone</h3>
+                                <p class="text-gray-400 text-sm mb-3">Traditional scone with blueberries</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹190</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Glazed Donut" data-price="150" data-description="Classic glazed donut with sweet coating">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=200&fit=crop&crop=center" alt="Glazed Donut" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Glazed Donut image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Glazed Donut</h3>
+                                <p class="text-gray-400 text-sm mb-3">Classic glazed with sweet coating</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹150</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <!-- New Snacks -->
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Avocado Toast" data-price="320" data-description="Fresh avocado on artisan sourdough bread">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=200&h=200&fit=crop&crop=center" alt="Avocado Toast" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Avocado Toast image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Avocado Toast</h3>
+                                <p class="text-gray-400 text-sm mb-3">Fresh avocado on sourdough</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹320</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Banana Bread" data-price="180" data-description="Moist homemade banana bread slice">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=200&h=200&fit=crop&crop=center" alt="Banana Bread" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Banana Bread image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Banana Bread</h3>
+                                <p class="text-gray-400 text-sm mb-3">Moist homemade banana bread</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹180</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Salted Pretzel" data-price="160" data-description="Warm soft pretzel with coarse salt">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1549312524-c5c8b0c8b0b8?w=200&h=200&fit=crop&crop=center" alt="Salted Pretzel" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Salted Pretzel image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Salted Pretzel</h3>
+                                <p class="text-gray-400 text-sm mb-3">Warm soft pretzel with salt</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹160</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Fresh Fruit Bowl" data-price="240" data-description="Mixed seasonal fruits with yogurt">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?w=200&h=200&fit=crop&crop=center" alt="Fresh Fruit Bowl" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Fresh Fruit Bowl image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Fresh Fruit Bowl</h3>
+                                <p class="text-gray-400 text-sm mb-3">Seasonal fruits with yogurt</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹240</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+
+                        <div class="snack-card bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 cursor-pointer border border-amber-700/20" data-snack="Granola Bar" data-price="140" data-description="Homemade granola bar with nuts and honey">
+                            <div class="h-32 bg-white flex items-center justify-center p-4">
+                                <img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=200&h=200&fit=crop&crop=center" alt="Granola Bar" class="w-20 h-20 object-cover rounded-lg shadow-sm" onerror="this.src=''; this.alt='Granola Bar image failed to load'; this.style.display='none';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-xl font-semibold mb-2 text-amber-100">Granola Bar</h3>
+                                <p class="text-gray-400 text-sm mb-3">Nuts and honey granola bar</p>
+                                <p class="text-amber-300 font-bold text-lg mb-3">₹140</p>
+                                <button class="w-full bg-amber-600 text-white py-2 px-4 rounded-xl font-bold transition duration-300 hover:bg-amber-700">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customization Screen -->
+            <div id="customization-screen" class="hidden fade-in">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-amber-100 mb-2">Customize Your <span id="selected-item-name">Item</span></h2>
+                    <p id="selected-item-description" class="text-gray-400"></p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left Column: Options -->
+                    <div class="space-y-6">
+                        <!-- Size Selection -->
+                        <div class="bg-gray-800/60 p-6 rounded-2xl border border-amber-700/20">
+                            <h3 class="text-xl font-semibold mb-4 text-amber-100">Size</h3>
+                            <div class="grid grid-cols-3 gap-3">
+                                <button class="size-btn bg-gray-700 hover:bg-amber-600 text-white py-3 px-4 rounded-xl transition duration-300 border-2 border-transparent" data-size="Small" data-multiplier="1">
+                                    <div class="text-2xl mb-1">🥃</div>
+                                    <div class="text-sm font-semibold">Small</div>
+                                    <div class="text-xs text-gray-400">8oz</div>
+                                </button>
+                                <button class="size-btn bg-amber-600 hover:bg-amber-700 text-white py-3 px-4 rounded-xl transition duration-300 border-2 border-amber-500" data-size="Medium" data-multiplier="1.2">
+                                    <div class="text-2xl mb-1">☕</div>
+                                    <div class="text-sm font-semibold">Medium</div>
+                                    <div class="text-xs text-gray-400">12oz</div>
+                                </button>
+                                <button class="size-btn bg-gray-700 hover:bg-amber-600 text-white py-3 px-4 rounded-xl transition duration-300 border-2 border-transparent" data-size="Large" data-multiplier="1.5">
+                                    <div class="text-2xl mb-1">🍺</div>
+                                    <div class="text-sm font-semibold">Large</div>
+                                    <div class="text-xs text-gray-400">16oz</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Milk Options (Coffee Only) -->
+                        <div id="milk-options" class="bg-gray-800/60 p-6 rounded-2xl border border-amber-700/20">
+                            <h3 class="text-xl font-semibold mb-4 text-amber-100">Milk</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="milk-btn bg-amber-600 hover:bg-amber-700 text-white py-3 px-4 rounded-xl transition duration-300 border-2 border-amber-500" data-milk="Regular">
+                                    <div class="text-lg mb-1">🥛</div>
+                                    <div class="text-sm font-semibold">Regular</div>
+                                </button>
+                                <button class="milk-btn bg-gray-700 hover:bg-amber-600 text-white py-3 px-4 rounded-xl transition duration-300 border-2 border-transparent" data-milk="Oat">
+                                    <div class="text-lg mb-1">🌾</div>
+                                    <div class="text-sm font-semibold">Oat (+₹40)</div>
+                                </button>
+                                <button class="milk-btn bg-gray-700 hover:bg-amber-600 text-white py-3 px-4 rounded-xl transition duration-300 border-2 border-transparent" data-milk="Almond">
+                                    <div class="text-lg mb-1">🥜</div>
+                                    <div class="text-sm font-semibold">Almond (+₹40)</div>
+                                </button>
+                                <button class="milk-btn bg-gray-700 hover:bg-amber-600 text-white py-3 px-4 rounded-xl transition duration-300 border-2 border-transparent" data-milk="Soy">
+                                    <div class="text-lg mb-1">🫘</div>
+                                    <div class="text-sm font-semibold">Soy (+₹40)</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Snack Options (Snacks Only) -->
+                        <div id="snack-options" class="bg-gray-800/60 p-6 rounded-2xl border border-amber-700/20 hidden">
+                            <h3 class="text-xl font-semibold mb-4 text-amber-100">Customizations</h3>
+                            <div class="space-y-3">
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🔥</span>
+                                        <span>Toasted/Warmed (+₹10)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Toasted" data-price="10">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🧈</span>
+                                        <span>Extra Butter (+₹20)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Extra Butter" data-price="20">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🍯</span>
+                                        <span>Honey Drizzle (+₹30)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Honey Drizzle" data-price="30">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🍓</span>
+                                        <span>Fresh Jam (+₹25)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Fresh Jam" data-price="25">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🧀</span>
+                                        <span>Extra Cheese (+₹40)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Extra Cheese" data-price="40">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🥜</span>
+                                        <span>Chopped Nuts (+₹35)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Chopped Nuts" data-price="35">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Coffee Extras -->
+                        <div id="coffee-extras" class="bg-gray-800/60 p-6 rounded-2xl border border-amber-700/20">
+                            <h3 class="text-xl font-semibold mb-4 text-amber-100">Extras & Add-ons</h3>
+                            <div class="space-y-3">
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">☕</span>
+                                        <span>Extra Shot (+₹60)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Extra Shot" data-price="60">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🍯</span>
+                                        <span>Vanilla Syrup (+₹40)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Vanilla Syrup" data-price="40">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🍫</span>
+                                        <span>Caramel Syrup (+₹40)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Caramel Syrup" data-price="40">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🍁</span>
+                                        <span>Hazelnut Syrup (+₹40)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Hazelnut Syrup" data-price="40">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🍫</span>
+                                        <span>Chocolate Drizzle (+₹50)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Chocolate Drizzle" data-price="50">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🥄</span>
+                                        <span>Cinnamon Powder (+₹20)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Cinnamon Powder" data-price="20">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🥛</span>
+                                        <span>Extra Foam (Free)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Extra Foam" data-price="0">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🔥</span>
+                                        <span>Extra Hot (Free)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Extra Hot" data-price="0">
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center">
+                                        <span class="text-lg mr-3">🧊</span>
+                                        <span>Iced Version (Free)</span>
+                                    </div>
+                                    <input type="checkbox" class="extra-checkbox w-5 h-5 text-amber-600 bg-gray-700 border-gray-600 rounded focus:ring-amber-500" data-extra="Iced Version" data-price="0">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Order Summary -->
+                    <div class="bg-gray-800/60 p-6 rounded-2xl border border-amber-700/20 h-fit">
+                        <h3 class="text-xl font-semibold mb-4 text-amber-100">Order Summary</h3>
+                        <div id="order-summary" class="space-y-3 mb-6">
+                            <!-- Order details will be populated here -->
+                        </div>
+                        <div class="border-t border-gray-600 pt-4 mb-6">
+                            <div class="flex justify-between items-center text-xl font-bold text-amber-100">
+                                <span>Total:</span>
+                                <span id="total-price">₹0</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <button id="add-to-cart-btn" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-xl font-bold text-lg transition duration-300">
+                                Add to Cart
+                            </button>
+                            <button id="back-to-selection-btn" class="w-full bg-gray-600 hover:bg-gray-700 text-white py-3 px-6 rounded-xl font-bold transition duration-300">
+                                Back to Selection
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Screen -->
+            <div id="cart-screen" class="hidden fade-in">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-amber-100 mb-2">Your Cart</h2>
+                    <p class="text-gray-400">Review your order before checkout</p>
+                </div>
+
+                <div class="bg-gray-800/60 p-6 rounded-2xl border border-amber-700/20 mb-6">
+                    <div id="cart-items" class="space-y-4 mb-6">
+                        <!-- Cart items will be populated here -->
+                    </div>
+                    <div class="border-t border-gray-600 pt-4">
+                        <div class="flex justify-between items-center text-2xl font-bold text-amber-100">
+                            <span>Cart Total:</span>
+                            <span id="cart-total">₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 justify-center">
+                    <button id="continue-shopping-btn" class="bg-gray-600 hover:bg-gray-700 text-white py-3 px-6 rounded-xl font-bold transition duration-300">
+                        Continue Shopping
+                    </button>
+                    <button id="checkout-btn" class="bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-xl font-bold text-lg transition duration-300">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Success Screen -->
+            <div id="success-screen" class="hidden fade-in text-center">
+                <div class="coffee-animation text-8xl mb-6">☕</div>
+                <h2 class="text-4xl font-bold text-green-400 mb-4">Order Placed Successfully!</h2>
+                <p class="text-xl text-gray-300 mb-8">Your delicious order will be ready in 5-7 minutes</p>
+                <div class="bg-gray-800/60 p-6 rounded-2xl border border-green-500/20 mb-8 max-w-md mx-auto">
+                    <h3 class="text-lg font-semibold text-green-400 mb-2">Order #CF-2024-001</h3>
+                    <p class="text-gray-400">Estimated pickup time: 5:15 PM</p>
+                </div>
+                <button id="new-order-btn" class="bg-amber-600 hover:bg-amber-700 text-white py-3 px-8 rounded-xl font-bold text-lg transition duration-300">
+                    Place New Order
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Application state
+        let currentOrder = {
+            item: '',
+            type: 'coffee', // 'coffee' or 'snack'
+            price: 0,
+            size: 'Medium',
+            sizeMultiplier: 1.2,
+            milk: 'Regular',
+            extras: [],
+            description: ''
+        };
+        let cart = [];
+        let currentTab = 'coffee';
+
+        // Screen management
+        function showScreen(screenId) {
+            const screens = ['selection-screen', 'customization-screen', 'cart-screen', 'success-screen'];
+            screens.forEach(screen => {
+                document.getElementById(screen).classList.add('hidden');
+            });
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        // Tab management
+        function switchTab(tabName) {
+            currentTab = tabName;
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-600', 'text-white');
+                btn.classList.add('bg-transparent', 'text-gray-400');
+            });
+            
+            if (tabName === 'coffee') {
+                document.getElementById('coffee-tab').classList.remove('bg-transparent', 'text-gray-400');
+                document.getElementById('coffee-tab').classList.add('bg-amber-600', 'text-white');
+                document.getElementById('coffee-section').classList.remove('hidden');
+                document.getElementById('snacks-section').classList.add('hidden');
+            } else {
+                document.getElementById('snacks-tab').classList.remove('bg-transparent', 'text-gray-400');
+                document.getElementById('snacks-tab').classList.add('bg-amber-600', 'text-white');
+                document.getElementById('coffee-section').classList.add('hidden');
+                document.getElementById('snacks-section').classList.remove('hidden');
+            }
+        }
+
+        // Tab event listeners
+        document.getElementById('coffee-tab').addEventListener('click', () => switchTab('coffee'));
+        document.getElementById('snacks-tab').addEventListener('click', () => switchTab('snacks'));
+
+        // Coffee selection
+        document.querySelectorAll('.coffee-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const coffee = this.dataset.coffee;
+                const price = parseFloat(this.dataset.price);
+                const description = this.dataset.description;
+                
+                currentOrder.item = coffee;
+                currentOrder.type = 'coffee';
+                currentOrder.price = price;
+                currentOrder.description = description;
+                
+                document.getElementById('selected-item-name').textContent = coffee;
+                document.getElementById('selected-item-description').textContent = description;
+                
+                // Show/hide appropriate customization options
+                document.getElementById('milk-options').classList.remove('hidden');
+                document.getElementById('coffee-extras').classList.remove('hidden');
+                document.getElementById('snack-options').classList.add('hidden');
+                
+                resetCustomizations();
+                updateOrderSummary();
+                showScreen('customization-screen');
+            });
+        });
+
+        // Snack selection
+        document.querySelectorAll('.snack-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const snack = this.dataset.snack;
+                const price = parseFloat(this.dataset.price);
+                const description = this.dataset.description;
+                
+                currentOrder.item = snack;
+                currentOrder.type = 'snack';
+                currentOrder.price = price;
+                currentOrder.description = description;
+                
+                document.getElementById('selected-item-name').textContent = snack;
+                document.getElementById('selected-item-description').textContent = description;
+                
+                // Show/hide appropriate customization options
+                document.getElementById('milk-options').classList.add('hidden');
+                document.getElementById('coffee-extras').classList.add('hidden');
+                document.getElementById('snack-options').classList.remove('hidden');
+                
+                resetCustomizations();
+                updateOrderSummary();
+                showScreen('customization-screen');
+            });
+        });
+
+        // Reset customizations
+        function resetCustomizations() {
+            // Reset size to medium
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-600', 'border-amber-500');
+                btn.classList.add('bg-gray-700', 'border-transparent');
+            });
+            document.querySelector('[data-size="Medium"]').classList.remove('bg-gray-700', 'border-transparent');
+            document.querySelector('[data-size="Medium"]').classList.add('bg-amber-600', 'border-amber-500');
+            
+            // Reset milk to regular
+            document.querySelectorAll('.milk-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-600', 'border-amber-500');
+                btn.classList.add('bg-gray-700', 'border-transparent');
+            });
+            document.querySelector('[data-milk="Regular"]').classList.remove('bg-gray-700', 'border-transparent');
+            document.querySelector('[data-milk="Regular"]').classList.add('bg-amber-600', 'border-amber-500');
+            
+            // Reset checkboxes
+            document.querySelectorAll('.extra-checkbox').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Reset order state
+            currentOrder.size = 'Medium';
+            currentOrder.sizeMultiplier = 1.2;
+            currentOrder.milk = 'Regular';
+            currentOrder.extras = [];
+        }
+
+        // Size selection
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.size-btn').forEach(b => {
+                    b.classList.remove('bg-amber-600', 'border-amber-500');
+                    b.classList.add('bg-gray-700', 'border-transparent');
+                });
+                this.classList.remove('bg-gray-700', 'border-transparent');
+                this.classList.add('bg-amber-600', 'border-amber-500');
+                
+                currentOrder.size = this.dataset.size;
+                currentOrder.sizeMultiplier = parseFloat(this.dataset.multiplier);
+                updateOrderSummary();
+            });
+        });
+
+        // Milk selection
+        document.querySelectorAll('.milk-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.milk-btn').forEach(b => {
+                    b.classList.remove('bg-amber-600', 'border-amber-500');
+                    b.classList.add('bg-gray-700', 'border-transparent');
+                });
+                this.classList.remove('bg-gray-700', 'border-transparent');
+                this.classList.add('bg-amber-600', 'border-amber-500');
+                
+                currentOrder.milk = this.dataset.milk;
+                updateOrderSummary();
+            });
+        });
+
+        // Extras selection
+        document.querySelectorAll('.extra-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const extra = this.dataset.extra;
+                const price = parseFloat(this.dataset.price);
+                
+                if (this.checked) {
+                    currentOrder.extras.push({ name: extra, price: price });
+                } else {
+                    currentOrder.extras = currentOrder.extras.filter(e => e.name !== extra);
+                }
+                updateOrderSummary();
+            });
+        });
+
+        // Update order summary
+        function updateOrderSummary() {
+            const summaryDiv = document.getElementById('order-summary');
+            let basePrice = currentOrder.type === 'coffee' ? currentOrder.price * currentOrder.sizeMultiplier : currentOrder.price;
+            let milkPrice = (currentOrder.type === 'coffee' && currentOrder.milk !== 'Regular') ? 40 : 0;
+            let extrasPrice = currentOrder.extras.reduce((sum, extra) => sum + extra.price, 0);
+            let totalPrice = basePrice + milkPrice + extrasPrice;
+            
+            let sizeDisplay = currentOrder.type === 'coffee' ? ` (${currentOrder.size})` : '';
+            let milkDisplay = currentOrder.type === 'coffee' ? `
+                <div class="flex justify-between text-sm text-gray-400">
+                    <span>Milk: ${currentOrder.milk}</span>
+                    <span>${milkPrice > 0 ? '+₹' + milkPrice : 'Free'}</span>
+                </div>
+            ` : '';
+            
+            summaryDiv.innerHTML = `
+                <div class="flex justify-between">
+                    <span>${currentOrder.item}${sizeDisplay}</span>
+                    <span>₹${Math.round(basePrice)}</span>
+                </div>
+                ${milkDisplay}
+                ${currentOrder.extras.map(extra => `
+                    <div class="flex justify-between text-sm text-gray-400">
+                        <span>${extra.name}</span>
+                        <span>${extra.price > 0 ? '+₹' + extra.price : 'Free'}</span>
+                    </div>
+                `).join('')}
+            `;
+            
+            document.getElementById('total-price').textContent = '₹' + Math.round(totalPrice);
+        }
+
+        // Add to cart
+        document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+            const orderCopy = JSON.parse(JSON.stringify(currentOrder));
+            cart.push(orderCopy);
+            updateCartDisplay();
+            showScreen('cart-screen');
+        });
+
+        // Update cart display
+        function updateCartDisplay() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            let cartTotal = 0;
+            
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p class="text-gray-400 text-center">Your cart is empty</p>';
+                document.getElementById('cart-total').textContent = '₹0';
+                return;
+            }
+            
+            cartItemsDiv.innerHTML = cart.map((item, index) => {
+                let basePrice = item.type === 'coffee' ? item.price * item.sizeMultiplier : item.price;
+                let milkPrice = (item.type === 'coffee' && item.milk !== 'Regular') ? 40 : 0;
+                let extrasPrice = item.extras.reduce((sum, extra) => sum + extra.price, 0);
+                let itemTotal = basePrice + milkPrice + extrasPrice;
+                cartTotal += itemTotal;
+                
+                let sizeDisplay = item.type === 'coffee' ? ` (${item.size})` : '';
+                let milkDisplay = item.type === 'coffee' ? `<p>Milk: ${item.milk}</p>` : '';
+                
+                return `
+                    <div class="bg-gray-700/50 p-4 rounded-xl border border-gray-600">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-semibold text-amber-100">${item.item}${sizeDisplay}</h4>
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-amber-300">₹${Math.round(itemTotal)}</span>
+                                <button class="remove-item text-red-400 hover:text-red-300 text-sm" data-index="${index}">✕</button>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            ${milkDisplay}
+                            ${item.extras.length > 0 ? '<p>Extras: ' + item.extras.map(e => e.name).join(', ') + '</p>' : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('cart-total').textContent = '₹' + Math.round(cartTotal);
+            
+            // Add remove functionality
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    cart.splice(index, 1);
+                    updateCartDisplay();
+                });
+            });
+        }
+
+        // Navigation buttons
+        document.getElementById('back-to-selection-btn').addEventListener('click', () => showScreen('selection-screen'));
+        document.getElementById('continue-shopping-btn').addEventListener('click', () => showScreen('selection-screen'));
+        document.getElementById('new-order-btn').addEventListener('click', () => {
+            cart = [];
+            currentOrder = {
+                item: '',
+                type: 'coffee',
+                price: 0,
+                size: 'Medium',
+                sizeMultiplier: 1.2,
+                milk: 'Regular',
+                extras: [],
+                description: ''
+            };
+            switchTab('coffee');
+            showScreen('selection-screen');
+        });
+
+        // Checkout
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            if (cart.length === 0) {
+                return;
+            }
+            showScreen('success-screen');
+        });
+
+        // Initialize the app
+        updateOrderSummary();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96f1fc2346a44701',t:'MTc1NTE5MDU4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
